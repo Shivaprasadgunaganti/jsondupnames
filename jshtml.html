@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myform">
+        <input type="text" id="name">
+        <input type="text" id="pswd"> 
+        <input type="submit">
+    </form>
+    <img  id="img1">
+    <script>
+      let getForm=document.getElementById("myform")
+        getForm.addEventListener('submit',()=>{
+          let exitUser=localStorage.getItem("users")
+          let users=exitUser?JSON.parse(exitUser):[]
+        let ip1=document.getElementById("name").value
+        let password=document.getElementById("pswd").value
+        let user={name:ip1,id:password}
+         let c=0
+        for(i of users){
+          if(i.name==ip1){
+            console.log("already exist")
+            alert("alredy exist")
+            c=1
+          }
+        }
+        if(c==0){
+            users.push(user)
+            localStorage.setItem("users",JSON.stringify(users))
+          }
+        
+      })
+    </script>
+</body>
+</html>
